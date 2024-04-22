@@ -11,11 +11,11 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 public class WordEntity  {
  
-        // word id
+        // id
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long wid;
+        private Long id;
     
-        // ゲーム名
+        // 単語
         private String word;
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @AllArgsConstructor
 public class WordForm {
 
-    private List<String> wordList;
+    private String word;
     
 }

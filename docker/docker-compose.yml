@@ -1,0 +1,17 @@
+version: '3'
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: demo-mysql
+        build: ./mysql
+        environment:
+            - MYSQL_DATABASE=demo
+            - MYSQL_ROOT_USER=demo
+            - MYSQL_ROOT_PASSWORD=demodemo
+            - TZ=Japan
+        volumes:
+            - ./mysql/DB:/docker-entrypoint-initdb.d
+            - ./dbdata:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        restart: always

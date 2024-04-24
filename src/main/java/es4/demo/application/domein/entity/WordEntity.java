@@ -1,4 +1,4 @@
-package es4.demo.allication.domein.entity;
+package es4.demo.application.domein.entity;
 
 import lombok.*;
 import jakarta.persistence.*;
@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "word_list")
 public class WordEntity  {
  
         // id

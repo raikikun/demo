@@ -1,10 +1,10 @@
-package es4.demo.allication.domein.service;
+package es4.demo.application.domein.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import es4.demo.allication.domein.entity.WordEntity;
-import es4.demo.allication.domein.repository.WordRepository;
+import es4.demo.application.domein.entity.WordEntity;
+import es4.demo.application.domein.repository.WordRepository;
 
 @Service
 public class WordService {

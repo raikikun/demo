@@ -1,9 +1,9 @@
-package es4.demo.allication.domein.repository;
+package es4.demo.application.domein.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import es4.demo.allication.domein.entity.WordEntity;
+import es4.demo.application.domein.entity.WordEntity;
 
 
 @Repository

@@ -1,4 +1,4 @@
-package es4.demo.allication.form;
+package es4.demo.application.form;
 
 import lombok.*;
 import java.util.List;

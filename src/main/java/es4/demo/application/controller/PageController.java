@@ -1,4 +1,4 @@
-package es4.demo.allication.controller;
+package es4.demo.application.controller;
 
 
 import java.util.List;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import es4.demo.allication.domein.entity.WordEntity;
-import es4.demo.allication.domein.service.WordService;
-import es4.demo.allication.form.WordForm;
+import es4.demo.application.domein.entity.WordEntity;
+import es4.demo.application.domein.service.WordService;
+import es4.demo.application.form.WordForm;
 import org.springframework.web.bind.annotation.RequestBody;
 
 

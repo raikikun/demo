@@ -6,27 +6,51 @@
     <title>単語一覧</title>
     <link th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
     <script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" type="text/javascript"></script>
+    <style>
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center; /* 中央に配置 */
+            height: 100vh;
+        }
+
+        .table-container {
+            margin-top: 20px; /* テーブルとフォームの上部のマージンを設定 */
+        }
+    </style>
 </head>
 
-<body class="m-3">
-    <h1>登録された単語一覧</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>単語</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="word : ${words}">
-                <td th:text="${word.id}"></td>
-                <td th:text="${word.word}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <form th:action="@{/back}" method="post" class="mb-3">
-        <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="戻る">
+<body>
+    <div class="center-content">
+        <h1>登録された単語一覧</h1>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>番号</th>
+                        <th>単語</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="word, stat : ${words}">
+                        <td th:text="${stat.index + 1}"></td>
+                        <td th:text="${word.word}"></td>
+                        <td>
+                            <form th:action="@{/delete/{id}(id=${word.id})}" method="post">
+                                <button type="submit">消去</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form th:action="@{/back}" method="post" class="mb-3">
+                <div class="mb-3">
+                    <input class="btn btn-primary" type="submit" value="戻る">
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </body>
+
+</html>

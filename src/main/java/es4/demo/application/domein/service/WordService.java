@@ -23,4 +23,9 @@ public class WordService {
     public List<WordEntity> getAllWords() {
         return (List<WordEntity>) wordRepository.findAll();
     }
+
+    public void deleteWordById(Long id) {
+        wordRepository.deleteById(id);
+    }
+    
 }

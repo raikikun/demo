@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,7 +29,7 @@ public class PageController  {
         return "index";
     }
 
-    @PostMapping("back")
+    @PostMapping("/back")
     public String backStartPage() {
         return "redirect:/";
     }
@@ -39,12 +41,19 @@ public class PageController  {
         return "redirect:/";
     }
 
-    @PostMapping("/show")
+    @GetMapping("/show")
     public String showWord(Model model) {
         // 単語のリストを取得するメソッドを呼び出して単語のデータを取得し、モデルにセットする
         List<WordEntity> words = wordService.getAllWords(); // 仮のメソッド名とサービスクラスの使用を想定
         model.addAttribute("words", words);
         return "show";
     }
+
+    @PostMapping("/delete/{id}")
+    public String deleteWord(@PathVariable("id") Long id) {
+        wordService.deleteWordById(id);
+        return "redirect:/show";
+    }
+
 
 }

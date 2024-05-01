@@ -1,25 +1,42 @@
 version: '3'
 services:
     mysql:
-        image: mysql:5.7
         container_name: demo-mysql
         build: ./mysql
         environment:
             - MYSQL_DATABASE=demo
             - MYSQL_USER=demo
             - MYSQL_PASSWORD=demodemo
-            # - MYSQL_ROOT_USER=demo
             - MYSQL_ROOT_PASSWORD=demodemo
             - TZ=Japan
         volumes:
-            # - ./mysql/DB:/docker-entrypoint-initdb.d
-            # - ./dbdata:/var/lib/mysql
             - "demo-volume:/var/lib/mysql"
         ports:
             - "3306:3306"
         restart: always
+        networks:
+            - networks1
     
+    java:
+        container_name: demo-java
+        build: ./java
+        ports:
+            - "8080:8080"
+        environment:
+            spring.datasource.url: jdbc:mysql://demo-mysql:3306/demo
+
+        working_dir: /app
+        depends_on:
+            - mysql
+        restart: always
+        tty: true
+        networks:
+            - networks1
+
 volumes:
     demo-volume:
         name: demo-volume
         external: true
+
+networks:
+    networks1:
